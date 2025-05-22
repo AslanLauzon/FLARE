@@ -1,0 +1,25 @@
+.live-indicator-container {
+  display: flex;
+  align-items: center;
+  color: #dcddde;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 12px;
+  background-color: var(--discord-dark);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #f04747; /* Red color for live */
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

@@ -2,61 +2,139 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+:root {
+  --discord-bg: #36393f;
+  --discord-sidebar: #2f3136;
+  --discord-primary: #7289da;
+  --discord-highlight: #5865f2;
+  --discord-text: #dcddde;
+  --discord-muted: #72767d;
+  --discord-dark: #202225;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   position: relative;
-  color: white;
+  color: var(--discord-text);
   height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
-  font-family: sans-serif;
-  overflow-y: hidden;
+  background-color: var(--discord-bg);
+  font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.app-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 
-button {
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  appearance: none;
-  font-size: 1.3rem;
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
-  transition: all ease-in 0.1s;
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-button:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  height: fit-content;
-  width: fit-content;
-  margin: 10px;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-
-.Hello {
+.sidebar {
+  width: 250px;
+  background-color: var(--discord-sidebar);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-nav {
+  padding: 12px 0;
+  flex-grow: 1;
+}
+
+.sidebar-footer {
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-item {
+  display: flex;
   align-items: center;
-  margin: 20px 0;
+  padding: 10px 16px;
+  color: var(--discord-muted);
+  text-decoration: none;
+  margin: 2px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  background-color: rgba(79, 84, 92, 0.32);
+  color: var(--discord-text);
+}
+
+.nav-item.active {
+  background-color: rgba(79, 84, 92, 0.48);
+  color: white;
+}
+
+.nav-item svg {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.content-area {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-area h1 {
+  margin: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.diagram-container {
+  flex: 1;
+  background-color: var(--discord-dark);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--discord-muted);
+  border: 1px solid var(--discord-sidebar);
+  overflow: hidden;
+}
+
+.diagram-container svg {
+  display: block;
+}
+
+.graphs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 20px 20px 20px;
+  height: calc(100% - 60px); /* Subtract header height */
+  overflow: auto;
+}
+
+.graph-container {
+  background-color: var(--discord-dark);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
